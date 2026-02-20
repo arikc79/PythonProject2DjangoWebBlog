@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Всі працівники{% endblock %}
+
+{% block content %}
+    <h1>Всі працівники:</h1>
+    {% if workers %}
+        {% for worker in workers %}
+            <h2>{{ worker.name }}: {{ worker.salary }} грн</h2>
+            {% if worker.notes %}
+                <p>{{ worker.notes }}</p>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>Працівників ще немає.</p>
+    {% endif %}
+{% endblock %}

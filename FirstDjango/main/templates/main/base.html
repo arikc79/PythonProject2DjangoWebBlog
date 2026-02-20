@@ -1,0 +1,40 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}    {% endblock %}</title>
+
+    <link rel ="stylesheet" href="{% static 'main/css/base.css' %}">
+    {% block extra_css %}
+    <!-- тут буде якійсь блок -->
+    {% endblock %}
+
+
+</head>
+<body>
+    <nav class="navbar">
+        <!-- тут буде картинка -->
+        <img class="nav-logo" src="{% static 'main/img/Python-logo.png' %}" width="40" height="40" alt="Python Logo"/>
+        <div class="nav-links">
+            <a class="nav-link" href="{% url 'index' %}">Головна</a>
+            <a class="nav-link" href="{% url 'all_workers' %}">Всі працівники</a>
+            <a class="nav-link" href="#">Про нас</a>
+            <a class="nav-link" href="#">Контакти</a>
+        </div>
+    </nav>
+     <main class="main-content">
+        <div class="content-box">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+     </main>
+
+
+
+</body>
+</html>
