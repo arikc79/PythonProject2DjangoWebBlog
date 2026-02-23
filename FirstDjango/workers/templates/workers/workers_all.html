@@ -1,17 +1,42 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block title %}Всі працівники{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+    <style>
+        .main-content {
+            padding: 0 !important;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
-    <h1>Всі працівники:</h1>
-    {% if workers %}
-        {% for worker in workers %}
-            <h2>{{ worker.name }}: {{ worker.salary }} грн</h2>
-            {% if worker.notes %}
-                <p>{{ worker.notes }}</p>
-            {% endif %}
-        {% endfor %}
-    {% else %}
-        <p>Працівників ще немає.</p>
-    {% endif %}
+    <div class="workers-container">
+        <h1>Всі працівники:</h1>
+        {% if workers %}
+            <div class="workers-grid">
+                {% for worker in workers %}
+                    <div class="worker-card">
+                        <div class="worker-header">
+                            <h2>{{ worker.name }}</h2>
+                        </div>
+                        <div class="worker-info">
+                            <p class="salary"><strong>Зарплата:</strong> {{ worker.salary }} грн</p>
+                            {% if worker.notes %}
+                                <p class="notes"><strong>Примітки:</strong> {{ worker.notes }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="worker-actions">
+                            <a href="{% url 'edit_worker' worker.pk %}" class="btn btn-edit">✏️ Редагувати</a>
+                            <a href="{% url 'delete_worker' worker.pk %}" class="btn btn-delete">🗑️ Видалити</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-workers">Працівників ще немає.</p>
+        {% endif %}
+    </div>
 {% endblock %}

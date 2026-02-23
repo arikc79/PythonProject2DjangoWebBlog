@@ -1,40 +1,47 @@
 {% load static %}
 
 
-
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}    {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FirstDjango{% endblock %}</title>
 
     <link rel ="stylesheet" href="{% static 'main/css/base.css' %}">
     {% block extra_css %}
-    <!-- тут буде якійсь блок -->
     {% endblock %}
 
 
 </head>
 <body>
     <nav class="navbar">
-        <!-- тут буде картинка -->
-        <img class="nav-logo" src="{% static 'main/img/Python-logo.png' %}" width="40" height="40" alt="Python Logo"/>
-        <div class="nav-links">
-            <a class="nav-link" href="{% url 'index' %}">Головна</a>
-            <a class="nav-link" href="{% url 'all_workers' %}">Всі працівники</a>
-            <a class="nav-link" href="#">Про нас</a>
-            <a class="nav-link" href="#">Контакти</a>
+        <div class="nav-container">
+            <a href="{% url 'index' %}" class="nav-logo">
+                <img src="{% static 'main/img/Python-logo.png' %}" width="30" alt="FirstDjango" class="logo-image">
+                <span class="logo-text">FirstDjango</span>
+            </a>
+            <div class="nav-links">
+                <a class="nav-link" href="{% url 'index' %}">Головна</a>
+                <a class="nav-link" href="{% url 'all_workers' %}">Всі працівники</a>
+                <a class="nav-link" href="{% url 'about' %}">Про нас</a>
+                <a class="nav-link" href="#">Контакти</a>
+            </div>
         </div>
     </nav>
+
      <main class="main-content">
         <div class="content-box">
-            {% block content %}
+             {% block content %}
 
-            {% endblock %}
+             {% endblock %}
         </div>
      </main>
 
-
+     <footer class="footer">
+        <p>&copy; 2026 FirstDjango. Всі права захищені.</p>
+     </footer>
 
 </body>
 </html>
