@@ -1,12 +1,25 @@
 from pathlib import Path
 import os
+import importlib
 
-from dotenv import load_dotenv
+# Try to import load_dotenv dynamically to avoid unresolved import warnings in environments without python-dotenv
+try:
+    dotenv = importlib.import_module('dotenv')
+    load_dotenv = getattr(dotenv, 'load_dotenv')
+except Exception:
+    def load_dotenv(*a, **k):
+        # no-op fallback when python-dotenv is not installed
+        return False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(BASE_DIR / '.env')
+# Load .env if exists, otherwise fall back to env
+env_path = BASE_DIR / '.env'
+if not env_path.exists() and (BASE_DIR / 'env').exists():
+    # support for legacy 'env' file without dot
+    env_path = BASE_DIR / 'env'
+load_dotenv(env_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/

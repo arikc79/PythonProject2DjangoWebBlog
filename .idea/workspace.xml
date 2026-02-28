@@ -5,21 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cf16543-fd40-43c9-b0db-46b3c5637972" name="Изменения" comment="Web Blog Django">
-      <change afterPath="$PROJECT_DIR$/FirstDjango/FirstDjango/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/main/static/main/css/about.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/main/static/main/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/main/templates/main/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/worker_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/worker_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstDjango/README_RUN.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/migrations/0002_sample_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/static/workers/css/contact-form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/static/workers/css/resume.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/static/workers/css/worker-detail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/static/workers/css/workers-list.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/contact_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/resume_confirm_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/resume_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/worker_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_site/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_site/templates/my_site/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_site/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PythonProject2Django3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonProject2Django3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FirstDjango/FirstDjango/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/FirstDjango/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstDjango/FirstDjango/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/FirstDjango/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FirstDjango/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/main/static/main/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/static/main/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/main/templates/main/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/templates/main/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstDjango/env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstDjango/main/static/main/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/static/main/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/worker_confirm_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/worker_confirm_delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/worker_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/worker_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/workers_all.html" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/workers_all.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/tests.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/FirstDjango/workers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FirstDjango/workers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/views.py" afterDir="false" />
     </list>
@@ -34,8 +45,13 @@
       <entry key="_D:/Step/StepPyton2409/PythonProject2Django3" value="3A0uGJeMYcqQY5nvkAhV03hGiqu" />
     </persistenceIdMap>
   </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="inline" value="Auto" />
+    </selectedModels>
+  </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="94" />
+    <option name="cachedIndexableFilesCount" value="4966" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -74,18 +90,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Step/StepPyton2409/PythonProject2Django3/FirstDjango/main/static/main/css"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Step/StepPyton2409/PythonProject2Django3&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.customization.CustomizationConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Step\StepPyton2409\PythonProject2Django3\FirstDjango\main\static\main\css" />
@@ -104,6 +121,7 @@
       </set>
     </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="уровень приложения" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Задача по умолчанию">
       <changelist id="5cf16543-fd40-43c9-b0db-46b3c5637972" name="Изменения" comment="" />
@@ -146,6 +164,17 @@
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Django. Вступ" />

@@ -4,24 +4,25 @@
 {% block title %}Всі працівники{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
-    <style>
-        .main-content {
-            padding: 0 !important;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'workers/css/workers-list.css' %}?v=1">
 {% endblock %}
 
 {% block content %}
     <div class="workers-container">
-        <h1>Всі працівники:</h1>
+        <div class="header-with-button">
+            <h1>Всі працівники:</h1>
+            <a href="{% url 'create_worker' %}" class="btn btn-create">➕ Додати працівника</a>
+        </div>
         {% if workers %}
             <div class="workers-grid">
                 {% for worker in workers %}
                     <div class="worker-card">
-                        <div class="worker-header">
-                            <h2>{{ worker.name }}</h2>
-                        </div>
+                        <a href="{% url 'worker_detail' worker.pk %}" class="worker-link">
+                            <div class="worker-header">
+                                <h2>{{ worker.name }}</h2>
+                            </div>
+                        </a>
                         <div class="worker-info">
                             <p class="salary"><strong>Зарплата:</strong> {{ worker.salary }} грн</p>
                             {% if worker.notes %}

@@ -1,0 +1,40 @@
+/* Override для main-content */
+.main-content {
+    padding: 0 !important;
+}
+
+/* Worker link without underline */
+a.worker-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Forced styles for create button */
+a.btn-create {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+    color: white !important;
+    padding: 0.85rem 1.75rem !important;
+    border-radius: 10px !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.6rem !important;
+    white-space: nowrap !important;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.25) !important;
+    border: 2px solid transparent !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+a.btn-create:hover {
+    background: linear-gradient(135deg, #218838 0%, #1ea080 100%) !important;
+    transform: translateY(-3px) scale(1.03) !important;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+

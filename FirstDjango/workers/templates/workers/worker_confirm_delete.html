@@ -3,6 +3,10 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}?v=2">
+{% endblock %}
+
 {% block content %}
     <div class="confirm-container">
         <h2>⚠️ Підтвердження видалення</h2>

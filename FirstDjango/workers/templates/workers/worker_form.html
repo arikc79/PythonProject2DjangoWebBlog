@@ -3,6 +3,10 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}?v=2">
+{% endblock %}
+
 {% block content %}
     <div class="post-form-container">
         <h2>{{ title }}</h2>
@@ -47,8 +51,8 @@
             </div>
 
             <div class="form-buttons">
-                <button type="submit" class="btn btn-primary">💾 Зберегти</button>
-                <a href="{% url 'all_workers' %}" class="btn btn-secondary">❌ Скасувати</a>
+                <button type="submit" class="btn btn-primary">💾Зберегти</button>
+                <a href="{% url 'all_workers' %}" class="btn btn-secondary">❌Скасувати</a>
             </div>
         </form>
     </div>
