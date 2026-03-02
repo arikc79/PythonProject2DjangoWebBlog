@@ -1,11 +1,62 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block title %}Головна сторінка{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'main/css/home.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'main/css/buttons.css' %}?v=1">
+{% endblock %}
+
 {% block content %}
 
-    <h1>Вітаємо на головній сторінці!</h1>
-    <p>Це головна сторінка нашого Django-проєкту.</p>
-    <p><strong>Ваше передбачення на сьогодні:</strong> {{ prediction }}</p>
+    <div class="welcome-container">
+        {% if user.is_authenticated %}
+            <div class="welcome-box authenticated">
+                <div class="welcome-header">
+                    <h2>🎉 Привіт, <span class="username">{{ user.username }}</span>!</h2>
+                </div>
+
+                <div class="prediction-box">
+                    <div class="prediction-icon">🔮</div>
+                    <div class="prediction-content">
+                        <h3>Ваше передбачення на сьогодні:</h3>
+                        <p class="prediction-text">{{ prediction }}</p>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <a href="{% url 'logout' %}" class="btn btn-logout">🚪 Вихід</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="welcome-box guest">
+                <div class="welcome-header">
+                    <h2>👋 Ласкаво просимо!</h2>
+                    <p class="guest-message">Ви відвідуєте сайт як гість</p>
+                </div>
+
+                <div class="auth-description">
+                    <p>Увійдіть в систему або зареєструйтесь, щоб отримати доступ до всіх можливостей проєкту:</p>
+                    <ul class="features-list">
+                        <li>✅ Управління працівниками</li>
+                        <li>✅ Створення резюме</li>
+                        <li>✅ Додавання контактів</li>
+                        <li>✅ Персональні передбачення</li>
+                    </ul>
+                </div>
+
+                <div class="btn-group">
+                    <a href="{% url 'login' %}" class="btn btn-login">🔐 Вхід</a>
+                    <a href="{% url 'register' %}" class="btn btn-register">📝 Реєстрація</a>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="site-description">
+            <h3>Про проєкт</h3>
+            <p>Це головна сторінка нашого Django-проєкту. Тут ви можете керувати інформацією про працівників, їхні резюме та контактні дані.</p>
+        </div>
+    </div>
 
 {% endblock %}

@@ -1,0 +1,94 @@
+/* Стилі для сторінки деталей фільму (movie_detail.html) */
+
+/* Заголовок деталей фільму */
+.movie-detail-header {
+    position: relative;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--bg-dark) 100%);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.movie-detail-poster {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.rating-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #ffc107;
+    color: var(--secondary-color);
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.rating-badge i {
+    color: #ff9800;
+}
+
+/* Секції */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+}
+
+/* Відгуки */
+.review-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.review-author {
+    font-weight: bold;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+.review-rating {
+    background-color: #ffc107;
+    color: var(--secondary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.review-text {
+    color: #555;
+    line-height: 1.6;
+}
+
+.review-date {
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .movie-detail-poster {
+        margin-bottom: 1rem;
+    }
+}
+

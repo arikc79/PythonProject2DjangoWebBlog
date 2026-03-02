@@ -1,0 +1,317 @@
+/* ============================================
+   INDEX.CSS - Стилі головної сторінки
+   ============================================ */
+
+.welcome-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ============================================
+   БЛОК ПРИВІТАННЯ
+   ============================================ */
+
+.welcome-box {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.welcome-box:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    transform: translateY(-3px);
+}
+
+/* Авторизований користувач */
+.welcome-box.authenticated {
+    border-top: 5px solid #667eea;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+}
+
+/* Гість */
+.welcome-box.guest {
+    border-top: 5px solid #28a745;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fff9 100%);
+}
+
+/* ============================================
+   ЗАГОЛОВОК ПРИВІТАННЯ
+   ============================================ */
+
+.welcome-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.welcome-header h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.username {
+    font-weight: 700;
+    color: #667eea;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.guest-message {
+    color: #6c757d;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* ============================================
+   БЛОК ПЕРЕДБАЧЕННЯ
+   ============================================ */
+
+.prediction-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.prediction-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.prediction-icon {
+    font-size: 60px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    flex-shrink: 0;
+}
+
+.prediction-content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.prediction-content h3 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.prediction-text {
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+    font-style: italic;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   ОПИС АВТОРИЗАЦІЇ ДЛЯ ГОСТЕЙ
+   ============================================ */
+
+.auth-description {
+    margin: 30px 0;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    border-left: 5px solid #28a745;
+}
+
+.auth-description p {
+    font-size: 16px;
+    color: #495057;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+.features-list li {
+    font-size: 16px;
+    color: #495057;
+    padding: 10px 0;
+    padding-left: 10px;
+    border-bottom: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.features-list li:last-child {
+    border-bottom: none;
+}
+
+.features-list li:hover {
+    padding-left: 20px;
+    color: #28a745;
+}
+
+/* ============================================
+   ГРУПА КНОПОК
+   ============================================ */
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   ОПИС САЙТУ
+   ============================================ */
+
+.site-description {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.site-description h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.site-description p {
+    font-size: 16px;
+    color: #6c757d;
+    line-height: 1.8;
+}
+
+/* ============================================
+   АДАПТИВНІСТЬ
+   ============================================ */
+
+@media (max-width: 768px) {
+    .welcome-container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .welcome-box {
+        padding: 25px 20px;
+    }
+
+    .welcome-header h2 {
+        font-size: 26px;
+    }
+
+    .prediction-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+
+    .prediction-icon {
+        font-size: 50px;
+    }
+
+    .prediction-content h3 {
+        font-size: 16px;
+    }
+
+    .prediction-text {
+        font-size: 18px;
+    }
+
+    .auth-description {
+        padding: 20px;
+    }
+
+    .auth-description p,
+    .features-list li {
+        font-size: 15px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-group .btn {
+        width: 100%;
+    }
+
+    .site-description {
+        padding: 25px 20px;
+    }
+
+    .site-description h3 {
+        font-size: 22px;
+    }
+
+    .site-description p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-box {
+        padding: 20px 15px;
+    }
+
+    .welcome-header h2 {
+        font-size: 22px;
+    }
+
+    .prediction-box {
+        padding: 20px;
+    }
+
+    .prediction-icon {
+        font-size: 40px;
+    }
+
+    .prediction-content h3 {
+        font-size: 15px;
+    }
+
+    .prediction-text {
+        font-size: 16px;
+    }
+}
+

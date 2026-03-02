@@ -1,0 +1,50 @@
+{% extends 'cinema/base.html' %}
+{% load static %}
+
+{% block title %}Видалити відгук - Кінотеатр{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'cinema/css/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="form-card">
+            <h1 class="form-title text-danger">
+                <i class="fas fa-exclamation-triangle"></i> Видалити відгук?
+            </h1>
+
+            <div class="alert alert-danger">
+                <strong>Увага!</strong> Ви впевнені, що хочете видалити цей відгук?
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Відгук на фільм: {{ object.movie.title }}</h5>
+                    <div class="mb-2">
+                        <strong>Автор:</strong> {{ object.user_name }}<br>
+                        <strong>Оцінка:</strong> <span class="badge bg-warning text-dark">{{ object.rating }}/10</span><br>
+                        <strong>Дата:</strong> {{ object.created_at|date:"d.m.Y H:i" }}
+                    </div>
+                    <hr>
+                    <p class="card-text">{{ object.text }}</p>
+                </div>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="d-flex gap-2 justify-content-center">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Так, видалити
+                    </button>
+                    <a href="{% url 'movie_detail' object.movie.pk %}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Скасувати
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -10,6 +10,7 @@
     <title>{% block title %}FirstDjango{% endblock %}</title>
 
     <link rel ="stylesheet" href="{% static 'main/css/base.css' %}">
+    <link rel ="stylesheet" href="{% static 'main/css/buttons.css' %}?v=1">
     {% block extra_css %}
     {% endblock %}
 
@@ -32,6 +33,16 @@
     </nav>
 
      <main class="main-content">
+        {% if messages %}
+            <div class="messages-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <div class="content-box">
              {% block content %}
 

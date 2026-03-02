@@ -1,0 +1,87 @@
+{% extends 'cinema/base.html' %}
+{% load static %}
+
+{% block title %}Всі сеанси - Кінотеатр{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'cinema/css/session.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">
+        <i class="fas fa-calendar-alt text-danger"></i> Найближчі сеанси
+    </h1>
+    <p class="lead text-muted">Виберіть зручний час для перегляду</p>
+</div>
+
+<div class="mb-4">
+    <a href="{% url 'session_create' %}" class="btn btn-primary">
+        <i class="fas fa-plus-circle"></i> Додати сеанс
+    </a>
+</div>
+
+{% if sessions %}
+    {% regroup sessions by date.date as sessions_by_date %}
+
+    {% for date_group in sessions_by_date %}
+        <div class="mb-4">
+            <h3 class="section-title">
+                <i class="fas fa-calendar"></i> {{ date_group.grouper|date:"d.m.Y (l)" }}
+            </h3>
+
+            {% for session in date_group.list %}
+                <div class="session-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            {% if session.movie.poster %}
+                                <img src="{{ session.movie.poster.url }}" class="img-fluid rounded" alt="{{ session.movie.title }}" style="max-height: 150px; object-fit: cover;">
+                            {% else %}
+                                <div class="placeholder-poster" style="height: 150px; font-size: 2rem;">
+                                    <i class="fas fa-film"></i>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="fw-bold mb-2">
+                                <a href="{% url 'movie_detail' session.movie.pk %}" class="text-decoration-none text-dark">
+                                    {{ session.movie.title }}
+                                </a>
+                            </h5>
+                            <div class="mb-2">
+                                <span class="badge bg-primary">{{ session.movie.get_genre_display }}</span>
+                                <span class="badge bg-secondary">{{ session.movie.duration }} хв</span>
+                            </div>
+                            <div class="session-date">
+                                <i class="fas fa-clock"></i> {{ session.date|date:"H:i" }}
+                            </div>
+                            <span class="session-hall mt-2">
+                                <i class="fas fa-door-open"></i> Зала {{ session.hall_number }}
+                            </span>
+                        </div>
+                        <div class="col-md-3 text-end">
+                            <a href="{% url 'movie_detail' session.movie.pk %}" class="btn btn-primary btn-sm mb-2 w-100">
+                                <i class="fas fa-info-circle"></i> Деталі фільму
+                            </a>
+                            <a href="{% url 'session_delete' session.pk %}" class="btn btn-danger btn-sm w-100">
+                                <i class="fas fa-trash"></i> Видалити
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+{% else %}
+    <div class="empty-state">
+        <i class="fas fa-calendar-times"></i>
+        <h3>Сеансів ще немає</h3>
+        <p>Додайте перший сеанс, щоб почати!</p>
+        <a href="{% url 'session_create' %}" class="btn btn-primary mt-3">
+            <i class="fas fa-plus-circle"></i> Додати сеанс
+        </a>
+    </div>
+{% endif %}
+{% endblock %}
+

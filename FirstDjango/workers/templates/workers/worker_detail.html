@@ -14,8 +14,10 @@
         <div class="detail-header">
             <h1>{{ worker.name }}</h1>
             <div class="header-actions">
-                <a href="{% url 'edit_worker' worker.pk %}" class="btn btn-edit">✏️Редагувати</a>
-                <a href="{% url 'delete_worker' worker.pk %}" class="btn btn-delete">🗑️Видалити</a>
+                {% if user.is_superuser or user.id == worker.owner.id %}
+                    <a href="{% url 'edit_worker' worker.pk %}" class="btn btn-edit">✏️Редагувати</a>
+                    <a href="{% url 'delete_worker' worker.pk %}" class="btn btn-delete">🗑️Видалити</a>
+                {% endif %}
                 <a href="{% url 'all_workers' %}" class="btn btn-secondary">⬅️До списку</a>
             </div>
         </div>
@@ -56,17 +58,21 @@
                         <div class="resume-description">
                             <p>{{ worker.resume.discription }}</p>
                         </div>
-                        <div class="resume-actions">
-                            <a href="{% url 'edit_resume' worker.resume.pk %}" class="btn btn-edit">✏️Редагувати резюме</a>
-                            <a href="{% url 'delete_resume' worker.resume.pk %}" class="btn btn-delete">🗑️Видалити резюме</a>
-                        </div>
+                        {% if user.is_superuser %}
+                            <div class="resume-actions">
+                                <a href="{% url 'edit_resume' worker.resume.pk %}" class="btn btn-edit">✏️Редагувати резюме</a>
+                                <a href="{% url 'delete_resume' worker.resume.pk %}" class="btn btn-delete">🗑️Видалити резюме</a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             {% else %}
                 <div class="detail-section resume-section">
                     <h3>📄 Резюме</h3>
                     <p class="no-resume">Резюме ще не створено</p>
-                    <a href="{% url 'create_resume' worker.pk %}" class="btn btn-primary">➕ Створити резюме</a>
+                    {% if user.is_superuser %}
+                        <a href="{% url 'create_resume' worker.pk %}" class="btn btn-primary">➕ Створити резюме</a>
+                    {% endif %}
                 </div>
             {% endif %}
 
@@ -83,10 +89,14 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <a href="{% url 'create_contact' worker.pk %}" class="btn btn-primary">➕ Додати контакт</a>
+                    {% if user.is_superuser %}
+                        <a href="{% url 'create_contact' worker.pk %}" class="btn btn-primary">➕ Додати контакт</a>
+                    {% endif %}
                 {% else %}
                     <p class="no-contacts">Контакти ще не додано</p>
-                    <a href="{% url 'create_contact' worker.pk %}" class="btn btn-primary">➕ Додати контакт</a>
+                    {% if user.is_superuser %}
+                        <a href="{% url 'create_contact' worker.pk %}" class="btn btn-primary">➕ Додати контакт</a>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
