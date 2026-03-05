@@ -2,7 +2,7 @@ from django.urls import path
 from cinema.views import (
     MovieListView, MovieDetailView, MovieCreateView, MovieUpdateView, MovieDeleteView,
     SessionListView, SessionCreateView, SessionDeleteView,
-    ReviewDeleteView
+    UserProfileDetailView, ReviewUpdateView, ReviewDeleteView
 )
 
 urlpatterns = [
@@ -20,6 +20,9 @@ urlpatterns = [
     path('session/<int:pk>/delete/', SessionDeleteView.as_view(), name='session_delete'),
 
     # Review URLs
+    path('review/<int:pk>/edit/', ReviewUpdateView.as_view(), name='review_edit'),
     path('review/<int:pk>/delete/', ReviewDeleteView.as_view(), name='review_delete'),
-]
 
+    # User profile URLs
+    path('profile/<int:pk>/', UserProfileDetailView.as_view(), name='profile_detail'),
+]

@@ -4,56 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cf16543-fd40-43c9-b0db-46b3c5637972" name="Изменения" comment="FirstDjango">
-      <change afterPath="$PROJECT_DIR$/FirstDjango/main/static/main/css/auth-forms.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/main/static/main/css/buttons.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/main/static/main/css/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/main/templates/main/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/main/templates/main/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/static/workers/css/resume-delete.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/worker_search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/CSS_STRUCTURE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/DJANGO_IDE_CONFIG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/PROJECT_CHECK_REPORT.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/static/cinema/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/static/cinema/css/forms.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/static/cinema/css/movie-detail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/static/cinema/css/movie-list.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/static/cinema/css/session.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/review_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/session_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/session_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/session_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/create_superuser.py" afterDir="false" />
+    <list default="true" id="5cf16543-fd40-43c9-b0db-46b3c5637972" name="Изменения" comment="FirstDjango#02.03">
+      <change afterPath="$PROJECT_DIR$/My_first/cinema/management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/My_first/cinema/management/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/My_first/cinema/management/commands/setup_groups.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/profile_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/review_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PythonProject2Django3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonProject2Django3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/FirstDjango/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/FirstDjango/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/FirstDjango/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/FirstDjango/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/README_RUN.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/main/static/main/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/static/main/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/main/static/main/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/static/main/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/main/templates/main/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/templates/main/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/main/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/templates/main/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/main/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/static/workers/css/resume.css" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/static/workers/css/resume.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/static/workers/css/workers-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/static/workers/css/workers-list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/resume_confirm_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/resume_confirm_delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/worker_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/worker_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/workers_all.html" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/templates/workers/workers_all.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_first/CSS_STRUCTURE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_first/DJANGO_IDE_CONFIG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_first/PROJECT_CHECK_REPORT.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_first/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_first/cinema/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_first/cinema/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_first/cinema/templates/cinema/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_first/cinema/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_first/cinema/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,10 +38,12 @@
   <component name="CopilotUserSelectedModel">
     <selectedModels>
       <entry key="inline" value="Auto" />
+      <entry key="chat-panel" value="Auto" />
+      <entry key="agent-panel" value="Auto" />
     </selectedModels>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="5009" />
+    <option name="cachedIndexableFilesCount" value="5005" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -112,19 +83,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Step/StepPyton2409/PythonProject2Django3",
-    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Step/StepPyton2409/PythonProject2Django3&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Step\StepPyton2409\PythonProject2Django3\FirstDjango\main\static\main\css" />
@@ -193,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772309893887</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="FirstDjango#02.03">
+      <option name="closed" value="true" />
+      <created>1772480310286</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1772480310290</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,7 +191,8 @@
     <MESSAGE value="First Django" />
     <MESSAGE value="Web Blog Django" />
     <MESSAGE value="FirstDjango" />
-    <option name="LAST_COMMIT_MESSAGE" value="FirstDjango" />
+    <MESSAGE value="FirstDjango#02.03" />
+    <option name="LAST_COMMIT_MESSAGE" value="FirstDjango#02.03" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

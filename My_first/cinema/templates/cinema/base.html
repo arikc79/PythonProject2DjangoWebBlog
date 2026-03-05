@@ -21,7 +21,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'movie_list' %}">
                             <i class="fas fa-list"></i> Всі фільми
@@ -32,11 +32,39 @@
                             <i class="fas fa-calendar-alt"></i> Сеанси
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'movie_create' %}">
-                            <i class="fas fa-plus-circle"></i> Додати фільм
-                        </a>
-                    </li>
+                    {% if perms.cinema.add_movie %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'movie_create' %}">
+                                <i class="fas fa-plus-circle"></i> Додати фільм
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item text-light small me-lg-2">
+                            <i class="fas fa-user"></i> {{ user.username }}
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile_detail' user.pk %}">
+                                <i class="fas fa-id-card"></i> Переглянути
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <form method="post" action="{% url 'logout' %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link nav-link p-0">
+                                    <i class="fas fa-sign-out-alt"></i> Вийти
+                                </button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">
+                                <i class="fas fa-sign-in-alt"></i> Вхід
+                            </a>
+                        </li>
+                    {% endif %}
+
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/">
                             <i class="fas fa-cog"></i> Адмінка

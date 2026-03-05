@@ -41,12 +41,14 @@
                 {% endif %}
                 <p class="lead">{{ movie.description }}</p>
                 <div class="mt-4">
-                    <a href="{% url 'movie_edit' movie.pk %}" class="btn btn-warning">
-                        <i class="fas fa-edit"></i> Редагувати
-                    </a>
-                    <a href="{% url 'movie_delete' movie.pk %}" class="btn btn-danger">
-                        <i class="fas fa-trash"></i> Видалити
-                    </a>
+                    {% if can_edit_movie %}
+                        <a href="{% url 'movie_edit' movie.pk %}" class="btn btn-warning">
+                            <i class="fas fa-edit"></i> Редагувати
+                        </a>
+                        <a href="{% url 'movie_delete' movie.pk %}" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Видалити
+                        </a>
+                    {% endif %}
                     <a href="{% url 'movie_list' %}" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Назад
                     </a>
@@ -63,9 +65,11 @@
             <h2 class="section-title mb-0">
                 <i class="fas fa-calendar-alt"></i> Найближчі сеанси
             </h2>
-            <a href="{% url 'session_create_for_movie' movie.pk %}" class="btn btn-primary">
-                <i class="fas fa-plus"></i> Додати сеанс
-            </a>
+            {% if can_edit_movie %}
+                <a href="{% url 'session_create_for_movie' movie.pk %}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Додати сеанс
+                </a>
+            {% endif %}
         </div>
 
         {% if sessions %}
@@ -81,9 +85,11 @@
                                 <i class="fas fa-door-open"></i> Зала {{ session.hall_number }}
                             </span>
                         </div>
-                        <a href="{% url 'session_delete' session.pk %}" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash"></i>
-                        </a>
+                        {% if can_edit_movie %}
+                            <a href="{% url 'session_delete' session.pk %}" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
@@ -101,36 +107,44 @@
         </h2>
 
         <!-- Форма додавання відгуку -->
-        <div class="card form-card mb-4">
-            <h3 class="h5 fw-bold mb-3">Залиште свій відгук</h3>
-            <form method="post">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="{{ review_form.user_name.id_for_label }}" class="form-label">Ваше ім'я</label>
-                    {{ review_form.user_name }}
-                    {% if review_form.user_name.errors %}
-                        <div class="text-danger">{{ review_form.user_name.errors }}</div>
-                    {% endif %}
+        {% if user.is_authenticated %}
+            {% if not user_review %}
+                <div class="card form-card mb-4">
+                    <h3 class="h5 fw-bold mb-3">Залиште свій відгук</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="{{ review_form.rating.id_for_label }}" class="form-label">Оцінка (1-10)</label>
+                            {{ review_form.rating }}
+                            {% if review_form.rating.errors %}
+                                <div class="text-danger">{{ review_form.rating.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ review_form.text.id_for_label }}" class="form-label">Ваш відгук</label>
+                            {{ review_form.text }}
+                            {% if review_form.text.errors %}
+                                <div class="text-danger">{{ review_form.text.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Відправити відгук
+                        </button>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="{{ review_form.rating.id_for_label }}" class="form-label">Оцінка (1-10)</label>
-                    {{ review_form.rating }}
-                    {% if review_form.rating.errors %}
-                        <div class="text-danger">{{ review_form.rating.errors }}</div>
-                    {% endif %}
+            {% else %}
+                <div class="alert alert-info mb-4">
+                    <i class="fas fa-info-circle"></i> Ви вже залишили відгук на цей фільм.
+                    <a href="{% url 'review_edit' user_review.pk %}">Редагувати</a> або
+                    <a href="{% url 'review_delete' user_review.pk %}">видалити</a> його.
                 </div>
-                <div class="mb-3">
-                    <label for="{{ review_form.text.id_for_label }}" class="form-label">Ваш відгук</label>
-                    {{ review_form.text }}
-                    {% if review_form.text.errors %}
-                        <div class="text-danger">{{ review_form.text.errors }}</div>
-                    {% endif %}
-                </div>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i> Відправити відгук
-                </button>
-            </form>
-        </div>
+            {% endif %}
+        {% else %}
+            <div class="alert alert-warning mb-4">
+                <i class="fas fa-exclamation-triangle"></i>
+                <a href="{% url 'login' %}">Увійдіть в систему</a>, щоб залишити відгук.
+            </div>
+        {% endif %}
 
         <!-- Список відгуків -->
         {% if reviews %}
@@ -139,7 +153,10 @@
                     <div class="review-header">
                         <div>
                             <div class="review-author">
-                                <i class="fas fa-user-circle"></i> {{ review.user_name }}
+                                <i class="fas fa-user-circle"></i>
+                                <a href="{% url 'profile_detail' review.user.pk %}">
+                                    {{ review.user.get_full_name|default:review.user.username }}
+                                </a>
                             </div>
                             <div class="review-date">
                                 <i class="fas fa-clock"></i> {{ review.created_at|date:"d.m.Y H:i" }}
@@ -149,9 +166,16 @@
                             <span class="review-rating">
                                 <i class="fas fa-star"></i> {{ review.rating }}/10
                             </span>
-                            <a href="{% url 'review_delete' review.pk %}" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i>
-                            </a>
+                            {% if can_edit_movie or user.id == review.user.id %}
+                                <a href="{% url 'review_delete' review.pk %}" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            {% endif %}
+                            {% if user.id == review.user.id %}
+                                <a href="{% url 'review_edit' review.pk %}" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="review-text">{{ review.text }}</div>
@@ -165,4 +189,3 @@
     </div>
 </div>
 {% endblock %}
-
