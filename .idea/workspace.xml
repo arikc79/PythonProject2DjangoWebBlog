@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cf16543-fd40-43c9-b0db-46b3c5637972" name="Изменения" comment="FirstDjango#02.03">
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/management/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/management/commands/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/management/commands/setup_groups.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/profile_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/review_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/My_first/cinema/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PythonProject2Django3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonProject2Django3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstDjango/workers/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/FirstDjango/workers/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_first/CSS_STRUCTURE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_first/DJANGO_IDE_CONFIG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_first/PROJECT_CHECK_REPORT.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_first/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_first/cinema/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_first/cinema/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_first/cinema/templates/cinema/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/My_first/cinema/templates/cinema/movie_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_first/cinema/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_first/cinema/urls.py" afterDir="false" />
-    </list>
+    <list default="true" id="5cf16543-fd40-43c9-b0db-46b3c5637972" name="Изменения" comment=" My_first_Kinoteatr" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772480310290</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary=" My_first_Kinoteatr">
+      <option name="closed" value="true" />
+      <created>1772690543332</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1772690543332</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,7 +181,8 @@
     <MESSAGE value="Web Blog Django" />
     <MESSAGE value="FirstDjango" />
     <MESSAGE value="FirstDjango#02.03" />
-    <option name="LAST_COMMIT_MESSAGE" value="FirstDjango#02.03" />
+    <MESSAGE value=" My_first_Kinoteatr" />
+    <option name="LAST_COMMIT_MESSAGE" value=" My_first_Kinoteatr" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
