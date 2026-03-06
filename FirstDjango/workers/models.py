@@ -1,8 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
-
+from django.contrib.auth import get_user_model
 
 # Create your models here.
+User = get_user_model()
+
+
 class Worker(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False)
     salary = models.IntegerField(default=0)
@@ -24,12 +26,9 @@ class Resume(models.Model):
 
 
 class Contact(models.Model):
-    CONTACT_TYPE_CHOICES = [
-        ('email', 'Email'),
-        ('phone', 'Телефон'),
-        ('telegram', 'Telegram'),
+    CONTACT_TYPE_CHOICES = [('email', 'Email'), ('phone', 'Телефон'), ('telegram', 'Telegram'),
 
-    ]
+                            ]
 
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, related_name='contacts')
     type = models.CharField(max_length=20, choices=CONTACT_TYPE_CHOICES)
@@ -42,3 +41,13 @@ class Contact(models.Model):
     class Meta:
         verbose_name = 'Контакт'
         verbose_name_plural = 'Контакти'
+
+
+class Notification(models.Model):
+    recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications')
+    text = models.TextField(null=False, blank=False)
+    date_created = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.recipient.username}: {self.text[:20]} '
