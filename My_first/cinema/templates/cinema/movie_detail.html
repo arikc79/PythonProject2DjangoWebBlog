@@ -41,6 +41,21 @@
                 {% endif %}
                 <p class="lead">{{ movie.description }}</p>
                 <div class="mt-4">
+                    {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'toggle_favorite' movie.pk %}" class="d-inline me-2">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            {% if is_favorite %}
+                                <button type="submit" class="btn btn-outline-danger">
+                                    <i class="fas fa-heart-broken"></i> Прибрати з улюблених
+                                </button>
+                            {% else %}
+                                <button type="submit" class="btn btn-outline-success">
+                                    <i class="fas fa-heart"></i> Додати в улюблені
+                                </button>
+                            {% endif %}
+                        </form>
+                    {% endif %}
                     {% if can_edit_movie %}
                         <a href="{% url 'movie_edit' movie.pk %}" class="btn btn-warning">
                             <i class="fas fa-edit"></i> Редагувати
@@ -152,8 +167,12 @@
                 <div class="review-card">
                     <div class="review-header">
                         <div>
-                            <div class="review-author">
-                                <i class="fas fa-user-circle"></i>
+                            <div class="review-author d-flex align-items-center gap-2">
+                                {% if review.author_avatar_url %}
+                                    <img src="{{ review.author_avatar_url }}" alt="{{ review.user.username }}" class="rounded-circle" style="width: 36px; height: 36px; object-fit: cover;">
+                                {% else %}
+                                    <i class="fas fa-user-circle"></i>
+                                {% endif %}
                                 <a href="{% url 'profile_detail' review.user.pk %}">
                                     {{ review.user.get_full_name|default:review.user.username }}
                                 </a>

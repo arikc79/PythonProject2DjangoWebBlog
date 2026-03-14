@@ -11,7 +11,7 @@
     <div class="post-form-container">
         <h2>{{ title }}</h2>
 
-        <form method="post" class="post-form">
+        <form method="post" enctype="multipart/form-data" class="post-form">
             {% csrf_token %}
 
             <div class="form-group">
@@ -44,6 +44,25 @@
                 {% if form.notes.errors %}
                     <div class="field-errors">
                         {% for error in form.notes.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="id_photo">Фото:</label>
+                {% if form.instance.photo %}
+                    <div class="current-photo">
+                        <p class="current-photo-label">Поточне фото:</p>
+                        <img src="{{ form.instance.photo.url }}" alt="Поточне фото" class="photo-preview">
+
+                    </div>
+                {% endif %}
+                {{ form.photo }}
+                {% if form.photo.errors %}
+                    <div class="field-errors">
+                        {% for error in form.photo.errors %}
                             <span class="error">{{ error }}</span>
                         {% endfor %}
                     </div>

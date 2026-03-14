@@ -23,6 +23,15 @@
         </div>
 
         <div class="detail-card">
+            {% if worker.photo %}
+                <div class="detail-section photo-section">
+                    <h3>📷 Фото</h3>
+                    <div class="worker-photo">
+                        <img src="{{ worker.photo.url }}" alt="Фото {{ worker.name }}" class="photo-image">
+                    </div>
+                </div>
+            {% endif %}
+
             <div class="detail-section">
                 <h3>💵 Зарплата</h3>
                 <p class="salary-amount">{{ worker.salary }} грн</p>

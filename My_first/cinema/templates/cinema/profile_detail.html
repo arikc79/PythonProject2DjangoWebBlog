@@ -4,28 +4,93 @@
 
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
         <div class="card mb-4">
             <div class="card-body">
-                <h1 class="h3 mb-3">Профіль користувача</h1>
-                <p class="mb-1"><strong>Логін:</strong> {{ profile_user.username }}</p>
-                <p class="mb-1"><strong>Ім'я:</strong> {{ profile_user.get_full_name|default:'Не вказано' }}</p>
-                <p class="mb-0"><strong>Дата реєстрації:</strong> {{ profile_user.date_joined|date:"d.m.Y" }}</p>
+                <div class="d-flex flex-wrap align-items-center gap-4">
+                    <div>
+                        {% if profile_obj.avatar %}
+                            <img src="{{ profile_obj.avatar.url }}" alt="{{ profile_user.username }}" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+                        {% else %}
+                            <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 120px; height: 120px; font-size: 42px;">
+                                <i class="fas fa-user text-secondary"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h1 class="h3 mb-3">Профіль користувача</h1>
+                        <p class="mb-1"><strong>Логін:</strong> {{ profile_user.username }}</p>
+                        <p class="mb-1"><strong>Ім'я:</strong> {{ profile_user.get_full_name|default:'Не вказано' }}</p>
+                        <p class="mb-0"><strong>Дата реєстрації:</strong> {{ profile_user.date_joined|date:"d.m.Y" }}</p>
+                    </div>
+                </div>
+
+                {% if can_edit_profile %}
+                    <hr>
+                    <h2 class="h5">Оновити фото профілю</h2>
+                    <form method="post" enctype="multipart/form-data" class="row g-2">
+                        {% csrf_token %}
+                        <div class="col-md-8">{{ profile_form.avatar }}</div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary w-100">Зберегти фото</button>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-3"><div class="card"><div class="card-body"><strong>Відгуків:</strong> {{ stats.reviews_count }}</div></div></div>
+            <div class="col-md-3"><div class="card"><div class="card-body"><strong>Переглянуто:</strong> {{ stats.watched_movies_count }}</div></div></div>
+            <div class="col-md-3"><div class="card"><div class="card-body"><strong>Улюблених:</strong> {{ stats.favorites_count }}</div></div></div>
+            <div class="col-md-3"><div class="card"><div class="card-body"><strong>Бронювань:</strong> {{ stats.bookings_count }}</div></div></div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="h5 mb-3">Улюблені фільми</h2>
+                {% if favorite_items %}
+                    <ul class="list-group list-group-flush">
+                        {% for item in favorite_items %}
+                            <li class="list-group-item px-0 d-flex justify-content-between">
+                                <a href="{% url 'movie_detail' item.movie.pk %}">{{ item.movie.title }}</a>
+                                <span class="text-muted">додано {{ item.created_at|date:"d.m.Y" }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted mb-0">Немає улюблених фільмів.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="h5 mb-3">Переглянуті фільми</h2>
+                {% if watched_movies %}
+                    <ul class="list-group list-group-flush">
+                        {% for movie in watched_movies %}
+                            <li class="list-group-item px-0">
+                                <a href="{% url 'movie_detail' movie.pk %}">{{ movie.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted mb-0">Поки що немає переглянутих фільмів.</p>
+                {% endif %}
             </div>
         </div>
 
         <div class="card">
             <div class="card-body">
-                <h2 class="h5 mb-3">Активність</h2>
-                <p><strong>Кількість відгуків:</strong> {{ reviews_count }}</p>
-
-                {% if recent_reviews %}
-                    <h3 class="h6 mt-4">Останні відгуки</h3>
+                <h2 class="h5 mb-3">Всі відгуки користувача</h2>
+                {% if all_reviews %}
                     <ul class="list-group list-group-flush">
-                        {% for review in recent_reviews %}
+                        {% for review in all_reviews %}
                             <li class="list-group-item px-0">
                                 <a href="{% url 'movie_detail' review.movie.pk %}">{{ review.movie.title }}</a>
-                                <span class="text-muted"> - {{ review.rating }}/10</span>
+                                <span class="text-muted"> - {{ review.rating }}/10, {{ review.created_at|date:"d.m.Y H:i" }}</span>
+                                <div>{{ review.text|truncatechars:180 }}</div>
                             </li>
                         {% endfor %}
                     </ul>
@@ -37,4 +102,3 @@
     </div>
 </div>
 {% endblock %}
-

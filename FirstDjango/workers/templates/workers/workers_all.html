@@ -5,7 +5,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'main/css/index.css' %}?v=5">
-<link rel="stylesheet" href="{% static 'workers/css/workers-list.css' %}?v=3">
+<link rel="stylesheet" href="{% static 'workers/css/workers-list.css' %}?v=4">
 {% endblock %}
 
 {% block content %}
@@ -37,6 +37,11 @@
                 </div>
             {% endif %}
             <div class="worker-info">
+                {% if worker.photo %}
+                    <div class="worker-photo-thumb">
+                        <img src="{{ worker.photo.url }}" alt="Фото {{ worker.name }}">
+                    </div>
+                {% endif %}
                 <p class="salary"><strong>Зарплата:</strong> {{ worker.salary }} грн</p>
                 {% if worker.notes %}
                 <p class="notes"><strong>Примітки:</strong> {{ worker.notes }}</p>

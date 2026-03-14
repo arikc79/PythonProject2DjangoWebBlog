@@ -1,5 +1,5 @@
 from django import forms
-from cinema.models import Movie, Session, Review
+from cinema.models import Movie, Session, Review, TicketBooking, UserProfile
 
 
 class MovieForm(forms.ModelForm):
@@ -42,7 +42,7 @@ class SessionForm(forms.ModelForm):
 
     class Meta:
         model = Session
-        fields = ['movie', 'date', 'hall_number']
+        fields = ['movie', 'date', 'hall_number', 'max_tickets']
         widgets = {
             'movie': forms.Select(attrs={
                 'class': 'form-control'
@@ -56,6 +56,11 @@ class SessionForm(forms.ModelForm):
                 'min': 1,
                 'max': 20,
                 'placeholder': 'Номер зали (1-20)'
+            }),
+            'max_tickets': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'min': 1,
+                'placeholder': 'Кількість місць у залі'
             })
         }
 
@@ -80,3 +85,28 @@ class ReviewForm(forms.ModelForm):
             })
         }
 
+
+class TicketBookingForm(forms.ModelForm):
+    """Форма бронювання квитків"""
+
+    class Meta:
+        model = TicketBooking
+        fields = ['tickets_count']
+        widgets = {
+            'tickets_count': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'min': 1,
+                'value': 1
+            })
+        }
+
+
+class UserProfileForm(forms.ModelForm):
+    """Форма редагування фото профілю"""
+
+    class Meta:
+        model = UserProfile
+        fields = ['avatar']
+        widgets = {
+            'avatar': forms.FileInput(attrs={'class': 'form-control'})
+        }

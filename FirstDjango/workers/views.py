@@ -192,12 +192,12 @@ class ContactCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        """Привʼязуємо контакт до робітника"""
+
         form.instance.worker_id = self.kwargs['worker_pk']
         return super().form_valid(form)
 
     def get_success_url(self):
-        """Повертаємся на сторінку деталей робітника"""
+
         return reverse_lazy('worker_detail', kwargs={'pk': self.object.worker.pk})
 
 

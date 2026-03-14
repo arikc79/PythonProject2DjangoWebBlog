@@ -16,9 +16,11 @@
 </div>
 
 <div class="mb-4">
-    <a href="{% url 'session_create' %}" class="btn btn-primary">
-        <i class="fas fa-plus-circle"></i> Додати сеанс
-    </a>
+    {% if can_manage_sessions %}
+        <a href="{% url 'session_create' %}" class="btn btn-primary">
+            <i class="fas fa-plus-circle"></i> Додати сеанс
+        </a>
+    {% endif %}
 </div>
 
 {% if sessions %}
@@ -55,17 +57,70 @@
                             <div class="session-date">
                                 <i class="fas fa-clock"></i> {{ session.date|date:"H:i" }}
                             </div>
-                            <span class="session-hall mt-2">
+                            <span class="session-hall mt-2 d-block">
                                 <i class="fas fa-door-open"></i> Зала {{ session.hall_number }}
+                            </span>
+                            <span class="badge bg-info mt-2">
+                                Вільно місць: {{ session.available_tickets }} / {{ session.max_tickets }}
                             </span>
                         </div>
                         <div class="col-md-3 text-end">
                             <a href="{% url 'movie_detail' session.movie.pk %}" class="btn btn-primary btn-sm mb-2 w-100">
                                 <i class="fas fa-info-circle"></i> Деталі фільму
                             </a>
-                            <a href="{% url 'session_delete' session.pk %}" class="btn btn-danger btn-sm w-100">
-                                <i class="fas fa-trash"></i> Видалити
-                            </a>
+
+                            {% if user.is_authenticated %}
+                                {% if session.current_user_booking %}
+                                    <div class="alert alert-success py-2 px-2 small mb-2">
+                                        Ваше бронювання: {{ session.current_user_booking.tickets_count }} квитк.
+                                    </div>
+
+                                    {% if session.current_user_booking.is_watched %}
+                                        <div class="badge bg-success w-100 mb-2 py-2">
+                                            <i class="fas fa-check"></i> Переглянуто
+                                        </div>
+                                    {% else %}
+                                        <form method="post" action="{% url 'mark_booking_watched' session.current_user_booking.pk %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                            <button type="submit" class="btn btn-outline-primary btn-sm w-100 mb-2">
+                                                <i class="fas fa-check-circle"></i> Переглянуто
+                                            </button>
+                                        </form>
+
+                                        <form method="post" action="{% url 'cancel_booking' session.current_user_booking.pk %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                            <button type="submit" class="btn btn-outline-danger btn-sm w-100 mb-2">
+                                                <i class="fas fa-times"></i> Скасувати бронювання
+                                            </button>
+                                        </form>
+                                    {% endif %}
+                                {% endif %}
+
+                                <form method="post" action="{% url 'book_session' session.pk %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                    <div class="input-group input-group-sm mb-2">
+                                        <span class="input-group-text">К-сть</span>
+                                        <input type="number" name="tickets_count" min="1" class="form-control" value="{% if session.current_user_booking %}{{ session.current_user_booking.tickets_count }}{% else %}1{% endif %}">
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-sm w-100 mb-2">
+                                        <i class="fas fa-ticket-alt"></i>
+                                        {% if session.current_user_booking %}Оновити бронювання{% else %}Забронювати{% endif %}
+                                    </button>
+                                </form>
+                            {% else %}
+                                <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-sm w-100 mb-2">
+                                    Увійдіть для бронювання
+                                </a>
+                            {% endif %}
+
+                            {% if can_manage_sessions %}
+                                <a href="{% url 'session_delete' session.pk %}" class="btn btn-danger btn-sm w-100">
+                                    <i class="fas fa-trash"></i> Видалити
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -84,4 +139,3 @@
     </div>
 {% endif %}
 {% endblock %}
-

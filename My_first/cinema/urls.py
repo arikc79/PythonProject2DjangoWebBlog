@@ -2,7 +2,8 @@ from django.urls import path
 from cinema.views import (
     MovieListView, MovieDetailView, MovieCreateView, MovieUpdateView, MovieDeleteView,
     SessionListView, SessionCreateView, SessionDeleteView,
-    UserProfileDetailView, ReviewUpdateView, ReviewDeleteView
+    UserProfileDetailView, ReviewUpdateView, ReviewDeleteView,
+    book_session, cancel_booking, mark_booking_watched, toggle_favorite, FavoriteListView
 )
 
 urlpatterns = [
@@ -25,4 +26,13 @@ urlpatterns = [
 
     # User profile URLs
     path('profile/<int:pk>/', UserProfileDetailView.as_view(), name='profile_detail'),
+
+    # Booking URLs
+    path('session/<int:pk>/book/', book_session, name='book_session'),
+    path('booking/<int:pk>/cancel/', cancel_booking, name='cancel_booking'),
+    path('booking/<int:pk>/watched/', mark_booking_watched, name='mark_booking_watched'),
+
+    # Favorite URLs
+    path('movie/<int:pk>/favorite/', toggle_favorite, name='toggle_favorite'),
+    path('favorites/', FavoriteListView.as_view(), name='favorite_list'),
 ]

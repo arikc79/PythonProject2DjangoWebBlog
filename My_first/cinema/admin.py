@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cinema.models import Movie, Session, Review
+from cinema.models import Movie, Session, Review, UserProfile, FavoriteMovie, TicketBooking
 
 
 @admin.register(Movie)
@@ -17,7 +17,7 @@ class MovieAdmin(admin.ModelAdmin):
 
 @admin.register(Session)
 class SessionAdmin(admin.ModelAdmin):
-    list_display = ['movie', 'date', 'hall_number', 'created_at']
+    list_display = ['movie', 'date', 'hall_number', 'max_tickets', 'created_at']
     list_filter = ['date', 'hall_number']
     search_fields = ['movie__title']
     ordering = ['date']
@@ -56,3 +56,23 @@ class ReviewAdmin(admin.ModelAdmin):
         if obj is None:
             return True
         return request.user.is_superuser or obj.user == request.user
+
+
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ['user']
+    search_fields = ['user__username', 'user__email']
+
+
+@admin.register(FavoriteMovie)
+class FavoriteMovieAdmin(admin.ModelAdmin):
+    list_display = ['user', 'movie', 'created_at']
+    list_filter = ['created_at']
+    search_fields = ['user__username', 'movie__title']
+
+
+@admin.register(TicketBooking)
+class TicketBookingAdmin(admin.ModelAdmin):
+    list_display = ['user', 'session', 'tickets_count', 'created_at']
+    list_filter = ['created_at', 'session__date']
+    search_fields = ['user__username', 'session__movie__title']

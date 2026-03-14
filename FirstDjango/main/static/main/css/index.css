@@ -400,11 +400,40 @@
     .form-buttons {
         flex-direction: column;
     }
+}
 
-    .btn-primary,
-    .btn-secondary {
-        width: 100%;
-    }
+/* Photo Preview in Form */
+.current-photo {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    border: 2px dashed #dee2e6;
+}
+
+.current-photo-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.photo-preview {
+    max-width: 100%;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0.5rem 0;
+}
+
+.photo-hint {
+    font-size: 0.85rem;
+    color: #6c757d;
+    font-style: italic;
+    margin-top: 0.5rem;
 }
 
 /* Confirm Delete Styles */

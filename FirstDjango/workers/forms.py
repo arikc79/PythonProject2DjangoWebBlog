@@ -6,19 +6,34 @@ from workers.models import Worker, Resume, Contact
 class WorkCreateForm(forms.ModelForm):
     class Meta:
         model = Worker
-        fields = ['name', 'salary', 'notes']
+        fields = ['name',
+                  'salary',
+                  'notes',
+                  'photo']
 
-        labels = {'name': "Ім'я", 'salary': 'Зарплата', 'notes': 'Примітки',
+        labels = {'name': "Ім'я",
+                  'salary': 'Зарплата',
+                  'notes': 'Примітки',
+                  'photo': 'Фото',
 
                   }
 
-        help_texts = {'name': "Введіть ім'я працівника", 'salary': 'Введіть зарплату працівника',
-                      'notes': 'Додайте примітки про працівника', }
+        help_texts = {'name': "Введіть ім'я працівника",
+                      'salary': 'Введіть зарплату працівника',
+                      'notes': 'Додайте примітки про працівника',
+                      'photo': 'Завантажте фото працівника (необов\'язково)',}
 
-        widgets = {'name': forms.TextInput(attrs={'placeholder': 'Введіть ім\'я працівника', 'class': 'form-control'}),
-                   'salary': forms.NumberInput(attrs={'min': 0, 'step': 0.01, 'class': 'form-control'}),
+        widgets = {'name': forms.TextInput(attrs={'placeholder': 'Введіть ім\'я працівника',
+                                                  'class': 'form-control'}),
+                   'salary': forms.NumberInput(attrs={'min': 0,
+                                                      'step': 0.01,
+                                                      'class': 'form-control'}),
                    'notes': forms.Textarea(
-                       attrs={'placeholder': 'Додайте примітки про працівника', 'class': 'form-control', 'rows': 4}), }
+                       attrs={'placeholder': 'Додайте примітки про працівника',
+                              'class': 'form-control',
+                              'rows': 4}),
+                   'photo': forms.ClearableFileInput(attrs={'class': 'form-control',
+                                                            'accept': 'image/*'}),}
 
     def clean_name(self):
         name = self.cleaned_data.get('name')

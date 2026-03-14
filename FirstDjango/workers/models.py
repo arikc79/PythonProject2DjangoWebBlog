@@ -10,6 +10,7 @@ class Worker(models.Model):
     salary = models.IntegerField(default=0)
     notes = models.TextField(blank=True, null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='workers', null=True, blank=True)
+    photo = models.ImageField(upload_to='workers/photos/', blank=True, null=True, verbose_name='Фото')
 
     def __str__(self):
         return f'{self.id} {self.name.upper()}) - {self.salary} грн.'

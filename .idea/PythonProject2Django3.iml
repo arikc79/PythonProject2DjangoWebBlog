@@ -3,6 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/FirstDjango" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/My_first" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Web_blog" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/FirstDjango/env" />
       <excludeFolder url="file://$MODULE_DIR$/FirstDjango/venv" />

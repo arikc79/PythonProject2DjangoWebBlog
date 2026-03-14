@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import random
 
 from django.views.generic import TemplateView
@@ -6,6 +6,9 @@ from django.views import View
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from workers.models import Notification
 
 
 # Create your views here.
@@ -56,6 +59,20 @@ class IndexView(TemplateView):
 
         context['prediction'] = random.choice(self.predictions)
 
+        # Додаємо сповіщення для авторизованих користувачів
+        if self.request.user.is_authenticated:
+            notifications = Notification.objects.filter(
+                recipient=self.request.user
+            ).order_by('-date_created')[:5]  # Останні 5 сповіщень
+
+            unread_count = Notification.objects.filter(
+                recipient=self.request.user,
+                is_read=False
+            ).count()
+
+            context['notifications'] = notifications
+            context['unread_count'] = unread_count
+
         return context
 
 
@@ -96,3 +113,36 @@ class LogoutView(View):
         logout(request)
         messages.info(request, 'Ви успішно вийшли з системи.')
         return redirect('index')
+
+
+@login_required
+def mark_notification_read(request, notification_id):
+
+    notification = get_object_or_404(
+        Notification,
+        id=notification_id,
+        recipient=request.user
+    )
+
+    notification.is_read = True
+    notification.save()
+
+    messages.success(request, 'Сповіщення позначено як прочитане')
+    return redirect('index')
+
+
+@login_required
+def mark_all_notifications_read(request):
+
+    updated_count = Notification.objects.filter(
+        recipient=request.user,
+        is_read=False
+    ).update(is_read=True)
+
+    if updated_count > 0:
+        messages.success(request, f'Позначено {updated_count} сповіщень як прочитані')
+    else:
+        messages.info(request, 'Немає непрочитаних сповіщень')
+
+    return redirect('index')
+
